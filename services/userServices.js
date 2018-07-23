@@ -14,10 +14,15 @@ class UserServices {
         })
     }
 
-    getUser (req) {
-        return user.findOne({
-            where:{id:req.body.id}
+    getUser (data) {
+        return user.findAll({
+            where: {[Op.or]:{
+                    email:{[Op.iLike]: `%${data}%`},
+                    
+                }
+            }
         })
+        
     }
 
     updateUser (req) {

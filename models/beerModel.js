@@ -36,19 +36,16 @@ module.exports = function (sequelize, DataTypes){
 
             }
         },
-        // rating:{
-        //     type:DataTypes.ARRAY,
-        //     validate:{
-                
-        //     }
-        // },
+        rating:{
+            type:DataTypes.ARRAY(DataTypes.TEXT),
+        },
         validatedByBrewer:{
             type:DataTypes.BOOLEAN
         },
-        // comments:{
-        //     type:DataTypes.ARRAY,
+        comments:{
+            type:DataTypes.ARRAY(DataTypes.TEXT),
 
-        // }
+        }
     })
 }
 

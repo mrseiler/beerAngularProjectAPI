@@ -71,4 +71,17 @@ router.post('/login', function(req, res){
     )
 })
 
+router.get('/finduser/:query', function(req, res){
+    user.getUser(req.params.query)
+    .then(
+        function findAllSuccess(data) {
+            res.json(data);
+        },
+        function findAllError(err) {
+            res.send(500, err.message);
+        }
+    )
+})
+
+
 module.exports = router;
