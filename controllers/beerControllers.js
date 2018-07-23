@@ -82,3 +82,16 @@ router.delete('/deletebeer/:id', function(req, res){
 })
 
 module.exports = router;
+
+
+// router.get('/restricted-area', requiresAdmin, (req, res, next) => {
+//   // only admin can access this
+// });
+
+// function requiresAdmin(req, res, next) {
+//   if(req.user.admin !== true) {
+//      res.status(401).end();
+//   } else {
+//      next();
+//   }
+// }

@@ -18,6 +18,30 @@ module.exports = function (sequelize, DataTypes) {
                 min:5,
             }
         },
+        username:{
+            type:DataTypes.STRING,
+            validate:{
+                max:30,
+                notEmpty:true,
+            }
+        },
+        firstname:{
+            type:DataTypes.STRING,
+            validate:{
+                max:30,
+                notEmpty:true,
+            }
+        },
+        lastname:{
+            type:DataTypes.STRING,
+            validate:{
+                max:30,
+                notEmpty:true,
+            }
+        },
+        friends:{
+            type:DataTypes.ARRAY(DataTypes.TEXT),
+        }
         // Model: associate = (models) => {
         //     userModel.hasMany(models.userBeerModel)
         // }
@@ -25,8 +49,12 @@ module.exports = function (sequelize, DataTypes) {
 };
 
 // {
-//     'user':{
-//         'email':'test@test.com',
-//         'password':'12345',
+//     "user":{
+//         "email":"bob@bob.com",
+//         "passwordhash":"12345",
+//         "username":"bobster",
+//         "firstname":"bob",
+//         "lastname":"roberts",
+//         "friends":["bill", "billybob","bobby"]
 //     }
 // }

@@ -1,7 +1,7 @@
 var jwt = require('jsonwebtoken');
 var sequelize = require('../db');
 var User = sequelize.import('../models/userModel');
-// var Brewer = sequelize.import('../models/brewerModel')
+var Brewer = sequelize.import('../models/brewerModel')
 
 module.exports = function(req, res, next) {
     if (req.method == 'OPTIONS') {
@@ -27,6 +27,9 @@ module.exports = function(req, res, next) {
         }
     }
 }
+
+
+
 
 // if(decoded){
 //                     if(User.findOne({where: { id: decoded.id}})){
