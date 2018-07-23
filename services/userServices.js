@@ -14,9 +14,9 @@ class UserServices {
         })
     }
 
-    getUser (req, id) {
+    getUser (req) {
         return user.findOne({
-            where:{id:req.user.id}
+            where:{id:req.body.id}
         })
     }
 
@@ -24,20 +24,18 @@ class UserServices {
         return user.update({
             passwordhash:bcrypt.hashSync(req.body.user.passwordhash, 10)
         },
-        {where:{id:req.body.user.id}})
+        {where:{id:req.body.id}})
     }
 
     deleteUser (req) {
         return user.destroy({
-            where:{id:req.body.user.id}
+            where:{id:req.body.id}
         })
     }
 
     userLogin (req) {
         return user.findOne({
-            where:{
-                email: req.body.user.email
-            }
+                email: req.body.email
         })
     }
 }

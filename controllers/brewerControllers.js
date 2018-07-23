@@ -42,7 +42,7 @@ router.get('/:id', function (req, res){
     )
 })
 
-router.put('/login', function(req, res){
+router.post('/login', function(req, res){
     Brewer.brewerLogin(req)
     .then(
         function(brewer){

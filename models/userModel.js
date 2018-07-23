@@ -18,8 +18,8 @@ module.exports = function (sequelize, DataTypes) {
                 min:5,
             }
         },
-        // Model: associate = (model) => {
-        //     user.userBeers(model.userBeers)
+        // Model: associate = (models) => {
+        //     userModel.hasMany(models.userBeerModel)
         // }
     })
 };

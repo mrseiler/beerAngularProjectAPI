@@ -1,7 +1,5 @@
 var express = require('express');
-var router = express.Router();
-var sequelize = require('../db');
-var User = sequelize.import('../models/userModel'); 
+var router = express.Router(); 
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 
@@ -45,14 +43,14 @@ router.put('/update/:id', function(req, res) {
 });
 
 router.post('/login', function(req, res){
-    console.log("request: ",req)
     User.userLogin(req)
     .then(
             function (user) {
-                console.log("user: ", user)
+                // console.log("user: ", user)
                 if (user) {
                     bcrypt.compare(req.body.user.passwordhash, user.passwordhash, function (err, matches){
                         if(matches){
+                            console.log("user id: ",user.id)
                             var token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: 60*60*24})
                             res.json({
                                 user: user,
@@ -72,4 +70,5 @@ router.post('/login', function(req, res){
         }
     )
 })
+
 module.exports = router;
