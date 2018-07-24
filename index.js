@@ -6,6 +6,8 @@ var bodyParser = require('body-parser');
 const morgan = require('morgan');
 const rfs = require('rotating-file-stream')
 
+var cors = require('cors');
+app.use(cors());
 // var logDirectory = path.join(__dirname, 'logs')
 
 // fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)

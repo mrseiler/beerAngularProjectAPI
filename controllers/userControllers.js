@@ -48,7 +48,7 @@ router.post('/login', function(req, res){
             function (user) {
                 // console.log("user: ", user)
                 if (user) {
-                    bcrypt.compare(req.body.user.passwordhash, user.passwordhash, function (err, matches){
+                    bcrypt.compare(req.body.user.password, user.passwordhash, function (err, matches){
                         if(matches){
                             console.log("user id: ",user.id)
                             var token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: 60*60*24})
@@ -58,7 +58,7 @@ router.post('/login', function(req, res){
                                 sessionToken:token
                             })
                         } else {
-                            res.status(502).send({error: "Invalid Credentials, didn't match"})
+                            res.status(502).json({error: "Wrong username and password combination"})
                         }
                     })
             } else {
@@ -66,7 +66,7 @@ router.post('/login', function(req, res){
             }
         },
         function (err) {
-            res.status(501).send({ error: "Invalid Credentials"})
+            res.status(501).send({ error: "Server not connected"})
         }
     )
 })
