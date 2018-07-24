@@ -5,7 +5,6 @@ var BeerServices = require('../services/beerServices')
 var beer = new BeerServices();
 
 router.post('/createbeer', function(req, res){
-    console.log("beer controller: ", req)
     beer.createBeer(req)
     .then(
         function createSuccess(beer) {

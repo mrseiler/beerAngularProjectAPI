@@ -1,5 +1,6 @@
 var sequelize = require('../db');
 const user = sequelize.import('../models/userModel')
+
 var bcrypt = require('bcryptjs');
 
 class UserServices {
@@ -40,7 +41,7 @@ class UserServices {
 
     userLogin (req) {
         return user.findOne({
-                email: req.body.email
+                where:{email: req.body.user.email}
         })
     }
 }

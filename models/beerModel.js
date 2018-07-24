@@ -37,14 +37,17 @@ module.exports = function (sequelize, DataTypes){
             }
         },
         rating:{
-            type:DataTypes.ARRAY(DataTypes.TEXT),
+            type: DataTypes.ARRAY(DataTypes.TEXT),
         },
         validatedByBrewer:{
             type:DataTypes.BOOLEAN
         },
         comments:{
-            type:DataTypes.ARRAY(DataTypes.TEXT),
+            type: DataTypes.ARRAY(DataTypes.TEXT),
 
+        },
+        owner:{
+            type:DataTypes.STRING,
         }
     })
 }
@@ -57,10 +60,11 @@ module.exports = function (sequelize, DataTypes){
 //             "breweryLocation":"Bloomington, IN",
 //             "style":"IPA",
 //             "abv":"6",
-//             "rating":"4",
+//             "rating":["4","5"],
 //             "validatedByBrewer":"true"
 //     }
 // }
+
 
 
 // {

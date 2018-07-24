@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes){
-    return sequelize.define('userbeer', {
+    var userbeer =  sequelize.define('userbeer', {
         name: {
             type: DataTypes.STRING,
             unique: true,
@@ -31,25 +31,37 @@ module.exports = function (sequelize, DataTypes){
             }
         },
         owner: {
-            type:DataTypes.STRING,
-            allowNull: false,
+            type:DataTypes.INTEGER,
             validate:{
                 max: 30,
-                notEmpty:true,
             }
         }
-        // Model: associate = (models) => {
-        //     userbeer.belongsTo(models.userModel)
-        // },
-    })
-}
+    },
+    {classMethods:{
+                associate:function(models){
+                    userbeer.belongsTo(models.user, { foreignKey:models.user.id, as:'User'} );
+                }
+            }
+        }
+    )
 
+    userbeer.associate = function(models){
+        userbeer.belongsTo(models.user, {foreignKey:models.user.id})
+    }
+    return userbeer;
+}
+// const City = sequelize.define('city', { countryCode: Sequelize.STRING });
+// const Country = sequelize.define('country', { isoCode: Sequelize.STRING });
+
+// Here we can connect countries and cities base on country code
+// Country.hasMany(City, {foreignKey: 'countryCode', sourceKey: 'isoCode'});
+// City.belongsTo(Country, {foreignKey: 'countryCode', targetKey: 'isoCode'});
 
 // {
 //     "userbeer":{
 //     "name":"Dragonfly",
-//     "locationhad":"O'Malleys"
-//     "rating":"2"
+//     "locationhad":"O'Malleys",
+//     "rating":"2",
 //     "comment":"It was awesome"
 //     }
 // }

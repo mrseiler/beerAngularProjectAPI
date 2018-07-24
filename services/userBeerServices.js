@@ -9,7 +9,8 @@ module.exports = class UserBeerServices{
             name:req.body.userbeer.name,
             locationhad:req.body.userbeer.locationhad,
             rating:req.body.userbeer.rating,
-            comment:req.body.userbeer.comment
+            comment:req.body.userbeer.comment,
+            owner:req.user.id
         })
     }
     getUserBeer(name){
@@ -20,9 +21,9 @@ module.exports = class UserBeerServices{
         })
     }
     getAllUserBeers(id){
-        return UserBeer.getAll({
+        return UserBeer.findAll({
             where:{
-                id:id
+                owner:id
             }
         })
     }
