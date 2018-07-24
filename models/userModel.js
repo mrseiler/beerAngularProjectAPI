@@ -5,6 +5,7 @@ module.exports = function (sequelize, DataTypes) {
         email: {
             type: DataTypes.STRING,
             unique:true,
+            allowNull: false,
             validate:{
                 isEmail:true,
                 notEmpty:true,
@@ -21,6 +22,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         username:{
             type:DataTypes.STRING,
+            allowNull: false,
             validate:{
                 max:30,
                 notEmpty:true,
@@ -28,6 +30,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         firstname:{
             type:DataTypes.STRING,
+            allowNull: false,
             validate:{
                 max:30,
                 notEmpty:true,
@@ -35,6 +38,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         lastname:{
             type:DataTypes.STRING,
+            allowNull: false,
             validate:{
                 max:30,
                 notEmpty:true,

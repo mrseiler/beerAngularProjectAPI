@@ -6,12 +6,14 @@ var bcrypt = require('bcryptjs');
 class UserServices {
 
     createUser (req) {
-        var email = req.body.user.email;
-        var pass = req.body.user.passwordhash;
+        var pass = req.body.user.password;
 
         return user.create({
-            email: email,
-            passwordhash: bcrypt.hashSync(pass, 10)
+            email: req.body.user.email,
+            passwordhash: bcrypt.hashSync(pass, 10),
+            username: req.body.user.username,
+            firstname: req.body.user.firstname,
+            lastname: req.body.user.lastname
         })
     }
 
@@ -28,7 +30,7 @@ class UserServices {
 
     updateUser (req) {
         return user.update({
-            passwordhash:bcrypt.hashSync(req.body.user.passwordhash, 10)
+            passwordhash: bcrypt.hashSync(req.body.user.password, 10)
         },
         {where:{id:req.body.id}})
     }
@@ -41,7 +43,7 @@ class UserServices {
 
     userLogin (req) {
         return user.findOne({
-                where:{email: req.body.user.email}
+                where: {username: req.body.user.username}
         })
     }
 }
