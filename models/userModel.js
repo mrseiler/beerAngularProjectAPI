@@ -1,6 +1,7 @@
+
 module.exports = function (sequelize, DataTypes) {
     
-    return sequelize.define('user', {
+    var user =  sequelize.define('user', {
         email: {
             type: DataTypes.STRING,
             unique:true,
@@ -45,12 +46,37 @@ module.exports = function (sequelize, DataTypes) {
         },
         friends:{
             type:DataTypes.ARRAY(DataTypes.TEXT),
+        },
+        isbrewer:{
+            type:DataTypes.BOOLEAN,
+            allowNull:true,
         }
         // Model: associate = (models) => {
         //     userModel.hasMany(models.userBeerModel)
         // }
-    })
+    },
+    {classMethods:{
+                associate:function(models){
+                    user.hasMany(models.userbeer, { foreignKey: user.id, as: 'userbeers'} );
+                }
+            }
+        }
+    )
+
+    user.associate = function(models){
+        user.hasMany(models.userbeer,{foreignKey: models.user.id})
+        console.log("models: ",models)
+    }
+    
+    return user;
 };
+
+// const City = sequelize.define('city', { countryCode: Sequelize.STRING });
+// const Country = sequelize.define('country', { isoCode: Sequelize.STRING });
+
+// Here we can connect countries and cities base on country code
+// Country.hasMany(City, {foreignKey: 'countryCode', sourceKey: 'isoCode'});
+// City.belongsTo(Country, {foreignKey: 'countryCode', targetKey: 'isoCode'});
 
 // {
 //     "user":{

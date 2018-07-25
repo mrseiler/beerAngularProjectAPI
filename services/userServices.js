@@ -1,5 +1,6 @@
 var sequelize = require('../db');
 const user = sequelize.import('../models/userModel')
+
 var bcrypt = require('bcryptjs');
 
 class UserServices {
@@ -25,6 +26,11 @@ class UserServices {
             }
         })
         
+    }
+    getOneUser(req) {
+        return user.findOne({
+            where: {id: req.body.id}
+        })
     }
 
     updateUser (req) {

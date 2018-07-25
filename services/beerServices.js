@@ -6,7 +6,6 @@ const Op = sequelize.Op;
 module.exports = class BeerServices{
 
     createBeer(req){
-        console.log("create beer: ", req)
         return Beer.create({
             beer:req.body.beer.item,
             name:req.body.beer.name,
@@ -16,6 +15,7 @@ module.exports = class BeerServices{
             abv:req.body.beer.abv,
             rating:req.body.beer.rating,
             validatedByBrewer:req.body.beer.validatedByBrewer,
+            owner: req.user.id
         })
     }
     getAllBeers(){

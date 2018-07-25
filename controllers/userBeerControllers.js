@@ -29,7 +29,7 @@ router.get('/getbeer/:name', function(req, res){
     )
 })
 router.get('/getallbeers', function(req, res){
-    userBeer.getAllUserBeers(req.body.user.id)
+    userBeer.getAllUserBeers(req.user.id)
     .then(
         function getSuccess(beers){
             res.json(beers)

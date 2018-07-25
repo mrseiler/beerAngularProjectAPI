@@ -54,9 +54,9 @@ router.post('/login', function(req, res){
                             var token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: 60*60*24})
                             res.json({
                                 user: user,
-                                message: "successfully authenticated",
-                                sessionToken:token
-                            })
+                                message:"successfully authenticated",
+                                sessionToken: token
+                       })
                         } else {
                             res.status(502).json({error: "Wrong username and password combination"})
                         }
