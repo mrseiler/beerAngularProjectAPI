@@ -16,7 +16,7 @@ class UserServices {
         })
     }
 
-    getUser (data) {
+    getUser(data) {
         return user.findAll({
             where: {[Op.or]:{
                     email:{[Op.iLike]: `%${data}%`},
