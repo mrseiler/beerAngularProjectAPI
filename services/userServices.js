@@ -27,17 +27,26 @@ class UserServices {
         })
         
     }
-
-    updateUser (req) {
-        return user.update({
-            passwordhash: bcrypt.hashSync(req.body.user.password, 10)
-        },
-        {where:{id:req.body.id}})
+    getOneUser(id) {
+        return user.findOne({
+            where: {id: id}
+        })
     }
 
-    deleteUser (req) {
+    updateUser (req, id) {
+        return user.update({
+            passwordhash: bcrypt.hashSync(req.body.user.password, 10),
+            firstname: req.body.user.firstname,
+            lastname: req.body.user.lastname,
+            username: req.body.user.username,
+            email: req.body.user.email
+        },
+        {where:{id: id}})
+    }
+
+    deleteUser (id) {
         return user.destroy({
-            where:{id:req.body.id}
+            where:{id: id}
         })
     }
 

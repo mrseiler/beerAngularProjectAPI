@@ -71,8 +71,30 @@ router.post('/login', function(req, res){
     )
 })
 
-router.get('/finduser/:query', function(req, res){
-    user.getUser(req.params.query)
+// router.get('/finduser/:query', function(req, res){
+//     user.getUser(req.params.query)
+//     .then(
+//         function findAllSuccess(data) {
+//             res.json(data);
+//         },
+//         function findAllError(err) {
+//             res.send(500, err.message);
+//         }
+//     )
+// })
+router.get('/finduser/:id', function(req, res){
+    User.getOneUser(req.params.id)
+    .then(
+        function findAllSuccess(data) {
+            res.json(data);
+        },
+        function findAllError(err) {
+            res.send(500, err.message);
+        }
+    )
+})
+router.delete('/delete/:id', function(req, res) {
+    User.deleteUser(req.params.id)
     .then(
         function findAllSuccess(data) {
             res.json(data);
