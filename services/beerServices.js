@@ -24,6 +24,7 @@ module.exports = class BeerServices{
         })
     }
     getOneBeer(id){
+        console.log("id: ", id)
         return Beer.findOne({
             where:{
                 id:id

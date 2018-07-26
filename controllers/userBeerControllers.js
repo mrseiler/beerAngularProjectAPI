@@ -39,7 +39,7 @@ router.get('/getallbeers', function(req, res){
         }
     )
 })
-router.post('/search/:query', function(req, res){
+router.get('/search/:query', function(req, res){
     userBeer.searchUserBeers(req.params.query)
     .then(
         function querySuccess(data){

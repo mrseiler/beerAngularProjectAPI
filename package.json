@@ -11,6 +11,8 @@
   "author": "Mason Seiler, Jon Jeffries, AJ Rardin",
   "license": "ISC",
   "dependencies": {
+    "@angular/cdk": "^6.4.1",
+    "@angular/material": "^6.4.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
