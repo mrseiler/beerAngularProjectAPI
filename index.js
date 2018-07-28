@@ -5,20 +5,11 @@ var sequelize = require('./db');
 var bodyParser = require('body-parser');
 const morgan = require('morgan');
 const rfs = require('rotating-file-stream')
-<<<<<<< HEAD
+
 
 var cors = require('cors');
 app.use(cors());
-=======
-<<<<<<< HEAD
 
-var cors = require('cors');
-app.use(cors());
-=======
-const cors = require('cors')
-app.use(cors())
->>>>>>> 41dd81496ee45754d32ce7d9654ea4529c0bd796
->>>>>>> 816a43b117fa19bb2fb288be0d551cbeccccfcd1
 // var logDirectory = path.join(__dirname, 'logs')
 
 // fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)

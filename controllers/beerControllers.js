@@ -42,8 +42,23 @@ router.get('/getonebeer/:id', function(req, res){
     )
 })
 
+router.put('/addrating/:name', function (req, res){
+    console.log("IN THE BEER CONTROLLER!!!!!!!!")
+    beer.addRating(req.params.name, req.body.rating)
+    .then(
+        function updateSuccess(beer){
+            res.json({
+                beer:beer
+            })
+        },
+        function updateError(err){
+            res.send(500, err.message)
+        }
+    )
+})
+
 router.put('/editbeer/:id', function(req, res){
-    beer.editBeer(req, req.params.id)
+    beer.editBeer(req.body.rating, req.params.id)
     .then(
         function updateSuccess(beer) {
                 res.json({
@@ -56,8 +71,8 @@ router.put('/editbeer/:id', function(req, res){
     )
 })
 
-router.get('/searchbeer/:query', function(req, res){
-    beer.searchBeer(req.params.query)
+router.get('/searchbeer/:value/:query', function(req, res){
+    beer.searchBeer(req.params.value, req.params.query)
     .then(
         function findAllSuccess(data) {
             res.json(data);

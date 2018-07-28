@@ -1,6 +1,7 @@
 var sequelize = require('../db');
 var Beer = sequelize.import('../models/beerModel'); 
 
+
 const Op = sequelize.Op;
 
 module.exports = class BeerServices{
@@ -24,12 +25,18 @@ module.exports = class BeerServices{
         })
     }
     getOneBeer(id){
-        console.log("id: ", id)
         return Beer.findOne({
             where:{
                 id:id
             }
         })
+    }
+    addRating(name, rating){
+        return Beer.update({
+            rating:sequelize.fn('array_append', Beer.sequelize.col('rating'), rating)
+        },
+        {where: {name:name}})
+        
     }
     editBeer(req, id){
         return Beer.update({
@@ -44,12 +51,10 @@ module.exports = class BeerServices{
         {where: {id:id}})
 
     }
-    searchBeer(data){
+    searchBeer(value, data){
         return Beer.findAll({
             where: {[Op.or]:{
-                    name:{[Op.iLike]: `%${data}%`},
-                    brewery:{[Op.iLike]: `%${data}%`},
-                    style:{[Op.iLike]: `%${data}%`},
+                    [value]:{[Op.iLike]: `%${data}%`},
                 }
             }
         })

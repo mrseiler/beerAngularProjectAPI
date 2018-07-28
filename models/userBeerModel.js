@@ -2,7 +2,6 @@ module.exports = function (sequelize, DataTypes){
     var userbeer =  sequelize.define('userbeer', {
         name: {
             type: DataTypes.STRING,
-            unique: true,
             validate:{
                 notEmpty:true,
                 max:30,
@@ -19,7 +18,7 @@ module.exports = function (sequelize, DataTypes){
         rating: {
             type: DataTypes.INTEGER,
             validate:{
-                max:3,
+                max:5,
                 notEmpty:true,
             }
         },
@@ -36,13 +35,8 @@ module.exports = function (sequelize, DataTypes){
                 max: 30,
             }
         }
-    },
-    {classMethods:{
-                associate : function(models){
-                    userbeer.belongsTo(models.user, { foreignKey:models.user.id, as:'User'} );
-                }
-            }
-        }
+    }
+        
     )
 
     userbeer.associate = function(models){
