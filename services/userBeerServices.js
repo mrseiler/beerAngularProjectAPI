@@ -46,9 +46,10 @@ module.exports = class UserBeerServices{
         },
         {where: {name:name}})
     }
-    deleteUserBeer(name){
+    deleteUserBeer(name, user){
         return UserBeer.destroy({
-            where: {name:name}
+            where: {name:name, owner:user}
+
         })
     }
 }

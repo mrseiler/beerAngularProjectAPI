@@ -5,7 +5,6 @@ var sequelize = require('./db');
 var bodyParser = require('body-parser');
 const morgan = require('morgan');
 const rfs = require('rotating-file-stream')
-
 var cors = require('cors');
 app.use(cors());
 

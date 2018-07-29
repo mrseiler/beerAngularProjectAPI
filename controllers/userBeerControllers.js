@@ -62,10 +62,10 @@ router.put('/update/:name', function (req, res){
     )
 })
 router.delete('/delete/:name', function(req, res){
-    userBeer.deleteUserBeer(req.params.name)
+    userBeer.deleteUserBeer(req.params.name, req.user.id)
     .then(
-        function deleteSuccess(){
-            res.send("You removed a beer.")
+        function deleteSuccess(beer){
+            res.send(beer.json)
         },
         function deleteError(){
             res.send("Could not remove.")
