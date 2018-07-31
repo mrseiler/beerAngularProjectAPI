@@ -8,22 +8,6 @@ const rfs = require('rotating-file-stream')
 var cors = require('cors');
 app.use(cors());
 
-// var logDirectory = path.join(__dirname, 'logs')
-
-// fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)
-
-// var accessLogStream = rfs('access.log', {
-//     interval: '1d',
-//     path: logDirectory
-// })
-
-// Rotating file logging
-
-// var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'})
-// Single file logging
-
-// app.use(morgan('combined', {stream: accessLogStream}))
-
 routes = require('./routes');
 
 sequelize.sync(); // tip: {force: true} for resetting tables\

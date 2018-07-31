@@ -43,7 +43,6 @@ router.get('/getonebeer/:id', function(req, res){
 })
 
 router.put('/addrating/:name', function (req, res){
-    console.log("IN THE BEER CONTROLLER!!!!!!!!")
     beer.addRating(req.params.name, req.body.rating)
     .then(
         function updateSuccess(beer){
@@ -96,16 +95,3 @@ router.delete('/deletebeer/:id', function(req, res){
 })
 
 module.exports = router;
-
-
-// router.get('/restricted-area', requiresAdmin, (req, res, next) => {
-//   // only admin can access this
-// });
-
-// function requiresAdmin(req, res, next) {
-//   if(req.user.admin !== true) {
-//      res.status(401).end();
-//   } else {
-//      next();
-//   }
-// }

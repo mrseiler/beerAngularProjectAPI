@@ -62,15 +62,3 @@ module.exports = function (sequelize, DataTypes){
         }
     })
 }
-
-// {
-//     "brewer":{
-//         "username":"user1",
-//         "breweryname":"Coors",
-//         "location":"Boulder, CO",
-//         "email":"coors@coors.com",
-//         "brewmaster":"your mom",
-//         "webpage":"coors.com",
-//         "passwordhash":"12345"
-//     }
-// }

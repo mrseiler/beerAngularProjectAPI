@@ -25,7 +25,6 @@ class UserServices {
                 }
             }
         })
-        
     }
     getOneUser(id) {
         return user.findOne({

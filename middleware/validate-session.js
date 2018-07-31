@@ -27,32 +27,3 @@ module.exports = function(req, res, next) {
         }
     }
 }
-
-
-
-
-// if(decoded){
-//                     if(User.findOne({where: { id: decoded.id}})){
-//                     User.findOne({where: { id: decoded.id}}).then(user => { 
-//                         req.user = user; 
-//                         next();
-//                     },
-//                     function(){ 
-//                         res.status(401).send({error: 'Not authorized'});
-//                     });
-//                     } else {
-//                         Brewer.findOne({where: { id: decoded.id}}).then(brewer =>{
-//                             req.brewer = brewer;
-//                             next();
-//                         },
-//                         function(){
-//                             res.status(401).send({error: 'Not authorized brewer'})
-//                         })
-//                     }
-//                 } else { 
-//                     res.status(400).send({error: 'Not authorized, not found'});
-//                 }
-//             });
-//         }
-//     }
-// }

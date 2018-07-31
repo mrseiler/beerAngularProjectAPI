@@ -51,30 +51,3 @@ module.exports = function (sequelize, DataTypes){
         }
     })
 }
-
-
-// {
-//     "beer":{
-//     		"name":"Dragonfly",
-//             "brewery":"Upland",
-//             "breweryLocation":"Bloomington, IN",
-//             "style":"IPA",
-//             "abv":"6",
-//             "rating":["4","5"],
-//             "validatedByBrewer":"true"
-//     }
-// }
-
-
-
-// {
-//     "beer":{
-//     		"name":"Centennial",
-//             "brewery":"Founder's",
-//             "breweryLocation":"Grand Rapids, MI",
-//             "style":"IPA",
-//             "abv":"7",
-//             "rating":"5",
-//             "validatedByBrewer":"true"
-//     }
-// }
